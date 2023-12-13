@@ -44,6 +44,7 @@ Getso Command employs MediaPipe for its pose estimation capabilities due to seve
 - **Feature Extraction**: Uses 1D Convolution and Time Distributed layers for effective feature analysis.
 - **Temporal Analysis**: Incorporates Bidirectional GRUs for capturing dynamics over time.
 - **Gesture Classification**: Ends with a softmax layer for precise gesture categorization.
+
 ![Neural Network Architecture](./assets/neural_network_architectur.jpg)
 
 ### 5. Continuous Gesture Recognition
@@ -58,7 +59,7 @@ Follow these steps to set up Getso Command on your system:
 
 1. **Download the Pretrained Model Weights**:
    - First, download the [pretrained model weight](https://drive.google.com/file/d/1ZrOyA84jIop2Z1WJGwOauCKoBzELfOgu/view?usp=sharing).
-   - Place the downloaded file into the ***model*** directory within your Getso Command project folder.
+   - Place the downloaded file into the ***models*** directory within your Getso Command project folder. Note that due to Github limitations, you will need to create the ***models directory*** yourself.
 
 2. **Install Required Libraries**:
    - Open your terminal or command prompt.
