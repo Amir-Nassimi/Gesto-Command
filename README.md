@@ -62,14 +62,102 @@ Follow these steps to set up Getso Command on your system:
    - Place the downloaded file into the ***models*** directory within your Getso Command project folder. Note that due to Github limitations, you will need to create the ***models directory*** yourself.
 
 2. **Install Required Libraries**:
-   - Open your terminal or command prompt.
-   - Navigate to the root directory of the Getso Command project.
-   - Run the following commands to install necessary libraries:
 
-```bash
-pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu117
-pip install -r requirements.txt
-```
+   To utilize GPU, please follow these steps:
+
+   2.1.1 Install ***Cuda Toolkit*** `11.8` via [this link](https://developer.nvidia.com/cuda-11-8-0-download-archive?target_os=Linux&target_arch=x86_64&Distribution=Ubuntu&target_version=22.04&target_type=deb_local): 
+
+      ```bash
+      wget https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2204/x86_64/cuda-ubuntu2204.pin
+      ```
+
+      ```bash
+      sudo mv cuda-ubuntu2204.pin /etc/apt/preferences.d/cuda-repository-pin-600
+      ```
+
+      ```bash
+      wget https://developer.download.nvidia.com/compute/cuda/11.8.0/local_installers/cuda-repo-ubuntu2204-11-8-local_11.8.0-520.61.05-1_amd64.deb
+      ```
+
+      ```bash
+      sudo dpkg -i cuda-repo-ubuntu2204-11-8-local_11.8.0-520.61.05-1_amd64.deb
+      ```
+
+      ```bash
+      sudo cp /var/cuda-repo-ubuntu2204-11-8-local/cuda-*-keyring.gpg /usr/share/keyrings/
+      ```
+
+      ```bash
+      sudo apt-get update
+      sudo apt-get -y install cuda
+      ```
+
+   2.1.2. Add the following lines to `~/.bashrc` and `~/.zshrc`:
+      ```bash
+      export PATH=/usr/local/cuda-11.8/bin${PATH:+:${PATH}}
+      ```
+
+      ```bash
+      export LD_LIBRARY_PATH=/usr/local/cuda-11.8/lib64${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}
+      ```
+
+   2.1.3. To apply changes run the following command (based on the desired terminal):
+      
+      ```bash
+      source ~/.bashrc
+      ```
+
+      ```bash
+      source ~/.zshrc
+      ```
+
+   2.1.4. configure the installation via the following command:
+      ```bash
+      nvcc --version
+      ```
+
+   2.2. Install ***cuDNN*** `8.7` library via [this link](https://developer.nvidia.com/cudnn-downloads?target_os=Linux&target_arch=x86_64&Distribution=Ubuntu&target_version=22.04&target_type=deb_local):
+
+      ```bash
+      wget https://developer.download.nvidia.com/compute/cudnn/8.7.0/local_installers/cudnn-local-repo-ubuntu2204-8.7.0_1.0-1_amd64.deb
+      ```
+
+      ```bash
+      sudo dpkg -i cudnn-local-repo-ubuntu2204-8.7.0.84_1.0-1_amd64.deb
+      ```
+
+      ```bash
+      sudo cp /var/cudnn-local-repo-ubuntu2204-8.7.0.84/cudnn-*-keyring.gpg /usr/share/keyrings/
+      ```
+      
+      ```bash
+      sudo apt-get update
+      sudo apt-get -y install cudnn-local-repo-ubuntu2204-8.7.0.84
+      ```
+
+   2.3. Create python `3.10.14` env.
+   
+   2.4. Follow this command to add necessary cuda libraries to the env:
+
+      ```bash
+      pip install nvidia-cudnn-cu11==8.7.0.84 cuda-python==11.8.0
+      ```
+   2.5. Install the Pytorch necessary libs:
+
+      ```bash
+      pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118
+      ```
+   2.6. Install Tensorflow necessary lib:
+
+      ```bash
+      pip3 install tensorflow==2.14.0
+      ```
+
+   2.7. Navigate to the root directory of the Getso Command project and run the following commands to install necessary libraries:
+
+      ```bash
+      pip install -r requirements.txt
+      ```
 
 ## Usage
 Getso Command responds to the following gestures:
