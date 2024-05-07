@@ -1,4 +1,0 @@
-einops==0.6.1
-mediapipe==0.10.3
-opencv-python==4.8.0.76
-singleton-decorator==1.0.0
