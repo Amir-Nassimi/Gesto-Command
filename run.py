@@ -20,7 +20,7 @@ class Execute:
         points = self.person_detection.Person_Detection(img.copy())
 
         if len(points) == 0:
-            return False, []
+            return False, sequences, []
 
         x, y, h, w = None, None, None, None
 
