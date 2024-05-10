@@ -31,7 +31,7 @@ class Execute:
 
             sequences.append(key_points.astype("float32"))
 
-        return True, sequences[-self.pose_command.seq_len:], [x, y, h, w]
+        return True, sequences[-self.pose_command.seqs_len:], [x, y, h, w]
 
     def execute_command(self, sequence):
         poses_seq = np.expand_dims(sequence, axis=0)
