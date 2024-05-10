@@ -31,7 +31,7 @@ class Execute:
 
             sequences.append(key_points.astype("float32"))
 
-        return True, sequences, [x, y, h, w]
+        return True, sequences[-self.pose_command.seq_len:], [x, y, h, w]
 
     def execute_command(self, sequence):
         poses_seq = np.expand_dims(sequence, axis=0)
@@ -78,8 +78,8 @@ def pose_command_(file_address, roi_region):
 
         counter += 1
 
-        if len(sequences[-seq_len:]) == seq_len:
-            predictions = execution_obj.execute_command(sequences[-seq_len:])
+        if len(sequences) == seq_len:
+            predictions = execution_obj.execute_command(sequences)
 
             results = {
                 "actions": execution_obj.pose_command.actions,
